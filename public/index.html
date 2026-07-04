@@ -185,11 +185,11 @@
   .list-label{color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.5px; margin:26px 0 10px}
   .pb-head .newr{margin-left:auto}
   .rt-heads{
-    display:grid; grid-template-columns:1fr 64px 64px 34px; gap:6px;
+    display:grid; grid-template-columns:1fr 56px 56px 60px 34px; gap:6px;
     color:var(--dim); font-size:10px; text-transform:uppercase; letter-spacing:.4px; margin-bottom:6px; padding:0 2px;
   }
   .rt-row{
-    display:grid; grid-template-columns:1fr 64px 64px 34px; gap:6px; align-items:center; margin-bottom:8px;
+    display:grid; grid-template-columns:1fr 56px 56px 60px 34px; gap:6px; align-items:center; margin-bottom:8px;
   }
   .rt-row input{
     background:var(--panel2); color:var(--fg); border:1px solid var(--line);
@@ -232,7 +232,7 @@
 
   @media (max-width:560px){
     .ex-edit-row, .ex-heads{grid-template-columns:1fr 44px 44px 54px 48px 26px; gap:4px}
-    .rt-heads, .rt-row{grid-template-columns:1fr 52px 52px 30px; gap:4px}
+    .rt-heads, .rt-row{grid-template-columns:1fr 46px 46px 52px 26px; gap:4px}
     .today-callout{flex-wrap:wrap}
     .today-callout .btn{width:100%}
     .card.routine .card-head{flex-wrap:wrap}
@@ -371,7 +371,7 @@
       <div class="field"><label>nome do dia</label><input type="text" id="rtName" placeholder="ex: Leg Day" autocomplete="off"></div>
       <div class="field" style="margin-bottom:8px"><label>exercícios planejados</label></div>
       <div class="rt-heads">
-        <span>exercício</span><span>séries</span><span>reps</span><span></span>
+        <span>exercício</span><span>séries</span><span>reps</span><span>desc(s)</span><span></span>
       </div>
       <div class="ex-editor" id="rtEditor"></div>
       <button class="btn ghost sm" id="rtAddExBtn" style="margin-top:4px">+ adicionar exercício</button>
@@ -588,6 +588,7 @@ function render(){
   renderChart();
 }
 function fmtNum(n){ return Number.isInteger(n)? n : (Math.round(n*100)/100); }
+function fmtRest(sec){ sec=parseInt(sec,10)||0; if(sec<=0) return ''; if(sec<60) return sec+'s'; const m=Math.floor(sec/60), s=sec%60; return s? m+'m'+s : m+'min'; }
 
 function toggleCard(id){ state.expandedId = state.expandedId===id? null : id; render(); }
 
@@ -774,12 +775,15 @@ function normalizeRoutineEx(raw){
   if(!raw || typeof raw!=='object') return null;
   const name = raw.name!=null ? String(raw.name).trim() : '';
   if(!name) return null;
-  return {
+  const ex = {
     id: (typeof raw.id==='string' && raw.id) ? raw.id : uid(),
     name,
     sets: Math.max(0, parseInt(raw.sets,10) || 0),
     reps: Math.max(0, parseInt(raw.reps,10) || 0)
   };
+  const rest = Math.max(0, parseInt(raw.rest,10) || 0);
+  if(rest) ex.rest = rest;
+  return ex;
 }
 function normalizeRoutine(raw){
   if(!raw || typeof raw!=='object') return null;
@@ -878,6 +882,7 @@ const LLM_PROMPT = `Monte um plano de treino (split) no formato JSON do app "~/t
 
 Regras:
 - "routines" = seus dias de treino (o plano). Cada um tem "name" e "exercises" (name, sets, reps inteiros).
+- (opcional) "rest" em cada exercício = descanso entre séries, em segundos (ex: 90).
 - Não coloque carga nas rotinas — o peso é preenchido na hora de treinar.
 - (opcional) para registrar treinos já feitos, use "sessions": cada uma tem "date" (YYYY-MM-DD), "name" e exercícios com "weight" e "unit" ("kg"/"lb").
 
@@ -945,7 +950,7 @@ function renderRoutines(){
     const rows = r.exercises.map(ex=>`
       <div class="ex-row">
         <span class="ex-name">${esc(ex.name)}</span>
-        <span class="ex-sr">${ex.sets}×${ex.reps}</span>
+        <span class="ex-sr">${ex.sets}×${ex.reps}${ex.rest?` · desc ${fmtRest(ex.rest)}`:''}</span>
       </div>`).join('');
     return `
     <div class="card routine ${open?'open':''}">
@@ -996,7 +1001,7 @@ function startFromRoutine(id){
 }
 
 /* ----- routine editor ----- */
-function blankRoutineEx(){ return {id:uid(), name:'', sets:4, reps:12}; }
+function blankRoutineEx(){ return {id:uid(), name:'', sets:4, reps:12, rest:90}; }
 function openRoutineEditor(routine){
   state.editingRoutine = routine ? JSON.parse(JSON.stringify(routine)) : { id:uid(), name:'', exercises:[] };
   document.getElementById('rtTitle').textContent = routine ? 'editar rotina' : 'nova rotina';
@@ -1013,11 +1018,12 @@ function renderRoutineExEditor(){
       <input type="text" value="${esc(ex.name)}" placeholder="nome" oninput="edRoutineEx(${i},'name',this.value)">
       <input type="number" value="${ex.sets}" min="1" oninput="edRoutineEx(${i},'sets',this.value)">
       <input type="number" value="${ex.reps}" min="1" oninput="edRoutineEx(${i},'reps',this.value)">
+      <input type="number" value="${ex.rest||0}" min="0" step="15" oninput="edRoutineEx(${i},'rest',this.value)">
       <button class="rm" onclick="rmRoutineEx(${i})" title="remover">✕</button>
     </div>`).join('');
 }
 function edRoutineEx(i,field,val){
-  if(field==='sets'||field==='reps') val=parseInt(val)||0;
+  if(field==='sets'||field==='reps'||field==='rest') val=parseInt(val)||0;
   state.editingRoutine.exercises[i][field]=val;
 }
 function rmRoutineEx(i){ state.editingRoutine.exercises.splice(i,1); if(state.editingRoutine.exercises.length===0) state.editingRoutine.exercises.push(blankRoutineEx()); renderRoutineExEditor(); }

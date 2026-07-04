@@ -7,26 +7,26 @@
       "id": "full-body-a",
       "name": "Full Body A",
       "exercises": [
-        { "name": "Agachamento", "sets": 3, "reps": 10 },
-        { "name": "Supino reto com halteres", "sets": 3, "reps": 10 },
-        { "name": "Puxada frente (pulldown)", "sets": 3, "reps": 10 },
-        { "name": "Desenvolvimento com halteres", "sets": 3, "reps": 10 },
-        { "name": "Mesa flexora", "sets": 3, "reps": 12 },
-        { "name": "Rosca direta", "sets": 3, "reps": 12 },
-        { "name": "Abdominal (crunch)", "sets": 3, "reps": 15 }
+        { "name": "Agachamento", "sets": 3, "reps": 10, "rest": 120 },
+        { "name": "Supino reto com halteres", "sets": 3, "reps": 10, "rest": 120 },
+        { "name": "Puxada frente (pulldown)", "sets": 3, "reps": 10, "rest": 90 },
+        { "name": "Desenvolvimento com halteres", "sets": 3, "reps": 10, "rest": 90 },
+        { "name": "Mesa flexora", "sets": 3, "reps": 12, "rest": 60 },
+        { "name": "Rosca direta", "sets": 3, "reps": 12, "rest": 60 },
+        { "name": "Abdominal (crunch)", "sets": 3, "reps": 15, "rest": 45 }
       ]
     },
     {
       "id": "full-body-b",
       "name": "Full Body B",
       "exercises": [
-        { "name": "Leg press", "sets": 3, "reps": 12 },
-        { "name": "Elevação pélvica (hip thrust)", "sets": 3, "reps": 12 },
-        { "name": "Remada curvada", "sets": 3, "reps": 10 },
-        { "name": "Supino inclinado com halteres", "sets": 3, "reps": 10 },
-        { "name": "Elevação lateral", "sets": 3, "reps": 15 },
-        { "name": "Tríceps na polia", "sets": 3, "reps": 12 },
-        { "name": "Panturrilha em pé", "sets": 4, "reps": 15 }
+        { "name": "Leg press", "sets": 3, "reps": 12, "rest": 120 },
+        { "name": "Elevação pélvica (hip thrust)", "sets": 3, "reps": 12, "rest": 90 },
+        { "name": "Remada curvada", "sets": 3, "reps": 10, "rest": 90 },
+        { "name": "Supino inclinado com halteres", "sets": 3, "reps": 10, "rest": 90 },
+        { "name": "Elevação lateral", "sets": 3, "reps": 15, "rest": 45 },
+        { "name": "Tríceps na polia", "sets": 3, "reps": 12, "rest": 60 },
+        { "name": "Panturrilha em pé", "sets": 4, "reps": 15, "rest": 45 }
       ]
     }
   ],
