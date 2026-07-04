@@ -1,0 +1,65 @@
+{
+  "app": "treinos",
+  "version": 1,
+  "owner": "ersantana360",
+  "routines": [
+    {
+      "id": "upper-body",
+      "name": "Upper Body",
+      "exercises": [
+        { "name": "Supino reto com halteres", "sets": 4, "reps": 10 },
+        { "name": "Remada curvada", "sets": 4, "reps": 10 },
+        { "name": "Puxada frente (pulldown)", "sets": 3, "reps": 12 },
+        { "name": "Desenvolvimento com halteres", "sets": 3, "reps": 10 },
+        { "name": "Elevação lateral", "sets": 3, "reps": 15 },
+        { "name": "Rosca direta", "sets": 3, "reps": 12 },
+        { "name": "Tríceps na polia", "sets": 3, "reps": 12 }
+      ]
+    },
+    {
+      "id": "lower-body",
+      "name": "Lower Body",
+      "exercises": [
+        { "name": "Agachamento", "sets": 4, "reps": 10 },
+        { "name": "Leg press", "sets": 3, "reps": 12 },
+        { "name": "Cadeira extensora", "sets": 3, "reps": 15 },
+        { "name": "Mesa flexora", "sets": 3, "reps": 12 },
+        { "name": "Elevação pélvica (hip thrust)", "sets": 3, "reps": 12 },
+        { "name": "Panturrilha em pé", "sets": 4, "reps": 15 },
+        { "name": "Abdominal (crunch)", "sets": 3, "reps": 15 }
+      ]
+    },
+    {
+      "id": "leg-day",
+      "name": "Leg Day",
+      "exercises": [
+        { "name": "Agachamento", "sets": 4, "reps": 15 },
+        { "name": "Leg press horizontal", "sets": 4, "reps": 15 },
+        { "name": "Cadeira extensora", "sets": 4, "reps": 15 },
+        { "name": "Abdutora (pra fora)", "sets": 4, "reps": 15 },
+        { "name": "Adutora (pra dentro)", "sets": 4, "reps": 15 }
+      ]
+    }
+  ],
+  "schedule": {
+    "1": "upper-body",
+    "2": "lower-body",
+    "4": "upper-body",
+    "5": "lower-body",
+    "6": "leg-day"
+  },
+  "sessions": [
+    {
+      "id": "seed-pernas-20260704",
+      "date": "2026-07-04",
+      "name": "Pernas",
+      "exercises": [
+        { "name": "Agachamento", "sets": 4, "reps": 15, "weight": 1, "unit": "kg" },
+        { "name": "Leg press horizontal", "sets": 4, "reps": 15, "weight": 3, "unit": "kg" },
+        { "name": "Cadeira extensora", "sets": 4, "reps": 15, "weight": 18, "unit": "kg" },
+        { "name": "Abdutora (pra fora)", "sets": 4, "reps": 15, "weight": 12, "unit": "kg" },
+        { "name": "Adutora (pra dentro)", "sets": 4, "reps": 15, "weight": 33, "unit": "kg" }
+      ]
+    }
+  ]
+}

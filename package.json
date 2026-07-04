@@ -1,0 +1,13 @@
+{
+  "name": "treinos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "~/treinos — local workout diary (static, localStorage) on Cloudflare Workers",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.86.0"
+  }
+}
