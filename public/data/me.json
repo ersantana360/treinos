@@ -4,37 +4,35 @@
   "owner": "ersantana360",
   "routines": [
     {
-      "id": "upper-body",
-      "name": "Upper Body",
+      "id": "full-body-a",
+      "name": "Full Body A",
       "exercises": [
-        { "name": "Supino reto com halteres", "sets": 4, "reps": 10 },
-        { "name": "Remada curvada", "sets": 4, "reps": 10 },
-        { "name": "Puxada frente (pulldown)", "sets": 3, "reps": 12 },
+        { "name": "Agachamento", "sets": 3, "reps": 10 },
+        { "name": "Supino reto com halteres", "sets": 3, "reps": 10 },
+        { "name": "Puxada frente (pulldown)", "sets": 3, "reps": 10 },
         { "name": "Desenvolvimento com halteres", "sets": 3, "reps": 10 },
-        { "name": "Elevação lateral", "sets": 3, "reps": 15 },
+        { "name": "Mesa flexora", "sets": 3, "reps": 12 },
         { "name": "Rosca direta", "sets": 3, "reps": 12 },
-        { "name": "Tríceps na polia", "sets": 3, "reps": 12 }
+        { "name": "Abdominal (crunch)", "sets": 3, "reps": 15 }
       ]
     },
     {
-      "id": "lower-body",
-      "name": "Lower Body",
+      "id": "full-body-b",
+      "name": "Full Body B",
       "exercises": [
-        { "name": "Agachamento", "sets": 4, "reps": 10 },
         { "name": "Leg press", "sets": 3, "reps": 12 },
-        { "name": "Cadeira extensora", "sets": 3, "reps": 15 },
-        { "name": "Mesa flexora", "sets": 3, "reps": 12 },
         { "name": "Elevação pélvica (hip thrust)", "sets": 3, "reps": 12 },
-        { "name": "Panturrilha em pé", "sets": 4, "reps": 15 },
-        { "name": "Abdominal (crunch)", "sets": 3, "reps": 15 }
+        { "name": "Remada curvada", "sets": 3, "reps": 10 },
+        { "name": "Supino inclinado com halteres", "sets": 3, "reps": 10 },
+        { "name": "Elevação lateral", "sets": 3, "reps": 15 },
+        { "name": "Tríceps na polia", "sets": 3, "reps": 12 },
+        { "name": "Panturrilha em pé", "sets": 4, "reps": 15 }
       ]
     }
   ],
   "schedule": {
-    "1": "upper-body",
-    "2": "lower-body",
-    "4": "upper-body",
-    "5": "lower-body"
+    "3": "full-body-a",
+    "6": "full-body-b"
   },
   "sessions": [
     {
