@@ -28,25 +28,13 @@
         { "name": "Panturrilha em pé", "sets": 4, "reps": 15 },
         { "name": "Abdominal (crunch)", "sets": 3, "reps": 15 }
       ]
-    },
-    {
-      "id": "leg-day",
-      "name": "Leg Day",
-      "exercises": [
-        { "name": "Agachamento", "sets": 4, "reps": 15 },
-        { "name": "Leg press horizontal", "sets": 4, "reps": 15 },
-        { "name": "Cadeira extensora", "sets": 4, "reps": 15 },
-        { "name": "Abdutora (pra fora)", "sets": 4, "reps": 15 },
-        { "name": "Adutora (pra dentro)", "sets": 4, "reps": 15 }
-      ]
     }
   ],
   "schedule": {
     "1": "upper-body",
     "2": "lower-body",
     "4": "upper-body",
-    "5": "lower-body",
-    "6": "leg-day"
+    "5": "lower-body"
   },
   "sessions": [
     {
